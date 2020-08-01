@@ -17,7 +17,7 @@ players = [
 
 
 def print_line(prefix, suffix):
-    sleep_time = 3
+    sleep_time = 0
     sys.stdout.write(prefix)
     sys.stdout.flush()
     for wait in range(3):
@@ -65,7 +65,10 @@ def validate_input():
     return consolation_prize_winner, consolation_prize_winner_first_pick, consolation_prize_winner_second_pick
 
 
-def consolation_prize_draw(array, pick_number):
+def consolation_prize_draw(array_size, pick_number):
+    array = [1]
+    for index in range(array_size-1):
+        array.append(0)
     for index in range(5000):
         random.shuffle(array)
     result = array[0] == 1
@@ -76,9 +79,9 @@ def consolation_prize_draw(array, pick_number):
 def get_consolation_prize_spot(first_pick, second_pick):
     if second_pick == 0:
         return first_pick
-    if consolation_prize_draw([1, 0], first_pick):
+    if consolation_prize_draw(2, first_pick):
         return first_pick
-    if consolation_prize_draw([1, 0, 0], second_pick):
+    if consolation_prize_draw(3, second_pick):
         return second_pick
     return 0
 
