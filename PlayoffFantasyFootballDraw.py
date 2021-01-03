@@ -4,12 +4,14 @@ import time
 
 players = [
     "Adi",
+    "Ayal",
     "Daniel",
     "Ehud",
     "Felix",
     "Gilad",
     "Hadar",
     "Jean",
+    "On",
     "Ophir",
     "Tom"
 ]
@@ -17,8 +19,9 @@ players = [
 for index in range(5000):
     random.shuffle(players)
 
-for index in range(len(players)):
-    backIndex = 8-index
+numOfPlayers = len(players)
+for index in range(numOfPlayers):
+    backIndex = numOfPlayers-index-1
     sys.stdout.write("Pick number {} goes to ".format(backIndex+1))
     sys.stdout.flush()
     for wait in range(3):
