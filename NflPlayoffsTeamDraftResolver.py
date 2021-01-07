@@ -32,7 +32,7 @@ def decrypt_bids_file(name, file):
     content = encrypted_file.read()
     while True:
         print("Enter password for {}".format(name))
-        password = input()
+        password = raw_input()
         aes = AES.new(password.zfill(16)[:16].encode("utf-8"), AES.MODE_ECB)
         bids_content = json.loads(aes.decrypt(content).decode("utf-8").lstrip('0'))
         if name == bids_content["Name"]:
@@ -48,7 +48,7 @@ def decrypt_bids_file(name, file):
 
 def decrypt_bids_files():
     global bidder_to_reversed_bids
-    for file in os.listdir(path='.'):
+    for file in os.listdir('.'):
         if file.endswith('.bids'):
             name = file[:len(file)-5]
             bidder_to_reversed_bids[name] = decrypt_bids_file(name, file)
@@ -59,7 +59,6 @@ def randomize_tie_breaker_order():
     global tie_breaker_order
     for index in range(5000):
         random.shuffle(users)
-    print()
     print("Tie-Breaker order is:")
     for index in range(len(users)):
         back_index = len(users) - index - 1
@@ -162,11 +161,11 @@ def print_results():
             time.sleep(5)
         print(log)
     print("\n\npress Enter for final results:")
-    input()
+    raw_input()
     for bidder in final_results:
         print("{}: {}".format(bidder, ", ".join(final_results[bidder])))
     print("\n\npress enter for original bids:")
-    input()
+    raw_input()
     for bidder in bidder_to_original_bids:
         original_bid = bidder_to_original_bids[bidder]
         priority = original_bid["priority"]

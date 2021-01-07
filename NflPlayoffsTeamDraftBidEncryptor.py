@@ -4,24 +4,26 @@ from Crypto.Cipher import AES
 teams = [
     "Baltimore Ravens",
     "Buffalo Bills",
+    "Chicago Bears",
+    "Cleveland Browns",
     "Green Bay Packers",
-    "Houston Texans",
+    "Indianapolis Colts",
     "Kansas City Chiefs",
-    "Minnesota Vikings",
-    "New England Patriots",
+    "Los Angeles Rams",
     "New Orleans Saints",
-    "Philadelphia Eagles",
-    "San Francisco 49ers",
+    "Pittsburgh Steelers",
     "Seattle Seahawks",
+    "Tampa Bay Buccaneers",
     "Tennessee Titans",
+    "Washington Football Team"
 ]
 
 
 def collect_bid(team, max_bid):
     while True:
         print("Enter your bid for {} (between 0 and {}): ".format(team, max_bid))
-        bid_str = input()
-        if not bid_str.isnumeric():
+        bid_str = raw_input()
+        if not bid_str.isdigit():
             print("Error: Not an integer!")
             continue
         bid = int(bid_str)
@@ -49,8 +51,8 @@ def get_priority_team(value_teams):
         print("Choose a team to prioritize higher:")
         for index in range(len(value_teams)):
             print("{}. {}".format(index + 1, value_teams[index]))
-        priority_index_str = input()
-        if not priority_index_str.isnumeric():
+        priority_index_str = raw_input()
+        if not priority_index_str.isdigit():
             print("Error: Not an integer!")
             continue
         priority_index = int(priority_index_str)
@@ -99,7 +101,7 @@ def verify_bids(bids, priority):
     for index in range(len(priority)):
         print("{}. {}".format(index+1, priority[index]))
     print("Are you sure? (Y/N)")
-    answer = input()
+    answer = raw_input()
     lower_answer = answer.lower()
     return lower_answer == "y" or lower_answer == "yes"
 
@@ -107,7 +109,7 @@ def verify_bids(bids, priority):
 def collect_name():
     while True:
         print("Name your bids: ")
-        name = input()
+        name = raw_input()
         if name.isalnum():
             return name
         print("Error: Not alpha-numeric!")
@@ -116,9 +118,9 @@ def collect_name():
 def collect_password():
     while True:
         print("Enter password: ")
-        password = input()
+        password = raw_input()
         print("Re-enter password: ")
-        password2 = input()
+        password2 = raw_input()
         if password == password2:
             return password.zfill(16)[:16]
         print("Passwords don't match")

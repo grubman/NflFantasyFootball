@@ -48,7 +48,7 @@ def validate_number(input_str, name, min_value, max_value):
     return value
 
 
-def validate_input():
+def validate_raw_input():
     consolation_prize_winner = sys.argv[1]
     if consolation_prize_winner not in players:
         print('ConsolationPrizeWinner should be one of {players}'.format(players=', '.join(players)))
@@ -96,7 +96,7 @@ def main():
     consolation_prize_winner = ''
     consolation_prize_winner_final_spot = 0
     if len(sys.argv) > 1:
-        consolation_prize_winner, consolation_prize_winner_first_pick, consolation_prize_winner_second_pick = validate_input()
+        consolation_prize_winner, consolation_prize_winner_first_pick, consolation_prize_winner_second_pick = validate_raw_input()
         consolation_prize_winner_final_spot = get_consolation_prize_spot(consolation_prize_winner_first_pick, consolation_prize_winner_second_pick)
 
     if consolation_prize_winner_final_spot != 0:
