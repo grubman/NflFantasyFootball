@@ -3,15 +3,13 @@ import sys
 import time
 
 players = [
-    "Amihay",
+    "Adi",
+    "Ayal",
+    "Daniel",
+    "Ehud",
+    "Felix",
     "Gilad",
     "Hadar",
-    "Ido",
-    "Ofer",
-    "Omer",
-    "On",
-    "Ophir",
-    "Shachar",
     "Tom"
 ]
 
