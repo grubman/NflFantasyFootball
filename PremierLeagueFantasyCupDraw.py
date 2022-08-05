@@ -8,10 +8,10 @@ players = [
     'Daniel Zilberberg',
     'Bar Badihi',
     'Ofer Nikos Tsitiat',
-    'hadar hason‬‏',
+    'hadar hason',
     'Michael Peleg',
     'Or Portal',
-    'Omer Apel‬‏',
+    'Omer Apel',
     'Dani Shafir',
     'David Cohen',
     'Idan Shwartz',
@@ -41,7 +41,7 @@ players = [
 
 
 def print_same_line(prefix, suffix):
-    sleep_time = 0
+    sleep_time = 1
     sys.stdout.write(prefix)
     sys.stdout.flush()
     for wait in range(5):
@@ -98,15 +98,15 @@ def main():
     rest_of_players.extend(generate_winners_list(1, 2))
 
     preliminary_round_game_week = shuffle_subgroup(range(10, 17), 1)[0][0]
-    round_game_weeks = shuffle_subgroup(range(17, 38), 5)[0]
+    round_game_weeks = shuffle_subgroup(range(18, 39), 4)[0]
     round_game_weeks.sort()
 
     shuffle_stage_and_print('Preliminary Round', preliminary_round_players, 1, preliminary_round_game_week)
-    shuffle_stage_and_print('First Round', rest_of_players, 3, round_game_weeks[0])
-    shuffle_stage_and_print('Round of 16', generate_winners_list(3, 16), 19, round_game_weeks[1])
-    shuffle_stage_and_print('Quarter Finals', generate_winners_list(19, 8), 27, round_game_weeks[2])
-    shuffle_stage_and_print('Semi Finals:', generate_winners_list(27, 4), 31, round_game_weeks[3])
-    shuffle_stage_and_print('Final', generate_winners_list(31, 2), 33, round_game_weeks[4])
+    shuffle_stage_and_print('First Round', rest_of_players, 3, 17)
+    shuffle_stage_and_print('Round of 16', generate_winners_list(3, 16), 19, round_game_weeks[0])
+    shuffle_stage_and_print('Quarter Finals', generate_winners_list(19, 8), 27, round_game_weeks[1])
+    shuffle_stage_and_print('Semi Finals:', generate_winners_list(27, 4), 31, round_game_weeks[2])
+    shuffle_stage_and_print('Final', generate_winners_list(31, 2), 33, round_game_weeks[3])
 
 
 if __name__ == "__main__":
