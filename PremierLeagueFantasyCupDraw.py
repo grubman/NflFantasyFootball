@@ -44,7 +44,7 @@ def print_same_line(prefix, suffix):
     sleep_time = 1
     sys.stdout.write(prefix)
     sys.stdout.flush()
-    for wait in range(5):
+    for wait in range(3):
         time.sleep(sleep_time)
         sys.stdout.write('.')
         sys.stdout.flush()
