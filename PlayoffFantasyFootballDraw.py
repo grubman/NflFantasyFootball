@@ -6,6 +6,7 @@ players = [
     "Adi",
     "Ayal",
     "Daniel",
+    "Ehud",
     "Felix",
     "Gilad",
     "Hadar",
