@@ -22,7 +22,7 @@ divisions = [
 
 
 def print_same_line(prefix, suffix):
-    sleep_time = 3
+    sleep_time = 1
     sys.stdout.write(prefix)
     sys.stdout.flush()
     for wait in range(3):
