@@ -11,14 +11,13 @@ matches = response['matches']
 team_ids = []
 
 for match in matches:
-    if match['stage'] == 'GROUP_STAGE':
+    if match['stage'] == 'LEAGUE_STAGE':
         match_day = match['matchday']
-        group = match['group']
         date = match['utcDate']
         home_team = match['homeTeam']['name']
         away_team = match['awayTeam']['name']
 
-        # print(f'{match_day},{group},{date},{home_team},{away_team}')
+        print(f'{match_day},{date},{home_team},{away_team}')
         home_team_id = match['homeTeam']['id']
         away_team_id = match['awayTeam']['id']
 

@@ -4,8 +4,8 @@ import time
 
 time.sleep(1)
 # need to register with different mail to https://developer.sportradar.com/ every year and get a new trial api_key
-api_key = "kr7wb3htbuxk2gdesv5esuph"
-response = requests.get('https://api.sportradar.us/nfl/official/trial/v7/en/seasons/2022/REG/standings/season.json?api_key={}'.format(api_key))
+api_key = "Hvuejf6RpLrRzhu5KgkLDy7ymwfck5g2kJ3wxlDY"
+response = requests.get('https://api.sportradar.us/nfl/official/trial/v7/en/seasons/2024/REG/standings/season.json?api_key={}'.format(api_key))
 standings = response.json()
 conferences = standings["conferences"]
 position_mapping = {
