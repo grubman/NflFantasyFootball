@@ -5,7 +5,7 @@ import csv
 
 connection = http.client.HTTPConnection('api.football-data.org')
 headers = {'X-Auth-Token': 'fb98f620df7a4def92738e2f7bb95d80'}
-connection.request('GET', '/v2/competitions/2001/matches', None, headers)
+connection.request('GET', '/v4/competitions/2001/matches', None, headers)
 response = json.loads(connection.getresponse().read().decode())
 matches = response['matches']
 team_ids = []
