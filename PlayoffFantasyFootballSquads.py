@@ -1,24 +1,27 @@
-import requests
+import http.client
+import json
 import csv
 import time
 
 time.sleep(1)
 # need to register with different mail to https://developer.sportradar.com/ every year and get a new trial api_key
-api_key = "Hvuejf6RpLrRzhu5KgkLDy7ymwfck5g2kJ3wxlDY"
-response = requests.get('https://api.sportradar.us/nfl/official/trial/v7/en/seasons/2024/REG/standings/season.json?api_key={}'.format(api_key))
-standings = response.json()
+api_key = "4WagDn6EGckKIB734rWSMiU1dhrGkFj41SCpXG3N"
+
+connection = http.client.HTTPConnection('api.sportradar.us')
+connection.request('GET', '/nfl/official/trial/v7/en/seasons/2025/REG/standings/season.json?api_key={}'.format(api_key))
+standings = json.loads(connection.getresponse().read().decode())
 conferences = standings["conferences"]
 position_mapping = {
-    "CB": "DP",
-    "DB": "DP",
-    "DE": "DP",
-    "DT": "DP",
+    "CB": "DB",
+    "DB": "DB",
+    "DE": "DL",
+    "DT": "DL",
     "FB": "RB",
     "K": "K",
-    "LB": "DP",
+    "LB": "LB",
     "QB": "QB",
     "RB": "RB",
-    "SAF": "DP",
+    "SAF": "DB",
     "TE": "TE",
     "WR": "WR"
 }
@@ -38,8 +41,8 @@ with open('/Users/hagrubma/NFLRosters.csv', 'w') as rosters_file:
                 roster_url = "https://api.sportradar.us/nfl/official/trial/v7/en/teams/{}/full_roster.json?api_key={}".format(team_id, api_key)
                 print("calling roster url - {}".format(roster_url))
                 time.sleep(1)
-                roster_response = requests.get("https://api.sportradar.us/nfl/official/trial/v7/en/teams/{}/full_roster.json?api_key={}".format(team_id, api_key))
-                roster = roster_response.json()
+                connection.request('GET', '/nfl/official/trial/v7/en/teams/{}/full_roster.json?api_key={}'.format(team_id, api_key))
+                roster = json.loads(connection.getresponse().read().decode())
                 players = roster["players"]
                 rosters_file_writer.writerow([team_name, "D/ST", team_name])
                 for player in players:
