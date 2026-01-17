@@ -8,6 +8,7 @@ players = [
     "Ayal",
     "Daniel",
     "Ehud",
+    "Eyal",
     "Felix",
     "Gilad",
     "Hadar",
