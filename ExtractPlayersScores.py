@@ -45,16 +45,15 @@ def main():
             "Player Name": info.get("full_name"),
             "Position": info.get("position"),
             "Team": info.get("team"),
-            "Injury Status": info.get("injury_status") or "Healthy"
         }
-        for w in range(1, 19):
+        for w in range(1, 5):
             results[p_id][f"Week {w}"] = 0.0
 
-    print("Step 2: Calculating league-specific scores for Weeks 1-18...")
-    for week in range(1, 19):
+    print("Step 2: Calculating league-specific scores for Weeks 19-22...")
+    for week in range(1, 5):
         print(f"  Processing Week {week}...")
         # stats endpoint provides raw data (pass_yd, rush_td, etc)
-        weekly_stats = get_json(f"https://api.sleeper.app/v1/stats/nfl/regular/{SEASON}/{week}")
+        weekly_stats = get_json(f"https://api.sleeper.app/v1/stats/nfl/post/{SEASON}/{week}")
 
         for p_id, stats in weekly_stats.items():
             if p_id in results:
@@ -66,7 +65,7 @@ def main():
 
     # Clean up: Remove rows with no names (e.g. empty IDs) and sort
     df = df.dropna(subset=["Player Name"])
-    cols = ["Player Name", "Position", "Team", "Injury Status"] + [f"Week {i}" for i in range(1, 19)]
+    cols = ["Player Name", "Position", "Team"] + [f"Week {i}" for i in range(1, 5)]
     df = df[cols]
 
     # Export
